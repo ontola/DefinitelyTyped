@@ -1,7 +1,8 @@
 // Type definitions for the RDFJS specification 2.0
 // Project: https://github.com/rdfjs/representation-task-force
 // Definitions by: Ruben Taelman <https://github.com/rubensworks>
-//                 Laurens Rietveld <https://github.com/LaurensRietveld>
+//                 Laurens Rietveld <https://github.com/LaurensRietveld
+//                 Joep Meindertsma <https://github.com/joepio>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.3
 
@@ -14,14 +15,18 @@ import { EventEmitter } from "events";
 /* https://rdf.js.org/data-model-spec/ */
 
 /**
- * Contains an Iri, RDF blank Node, RDF literal, variable name, or a default graph
- * @see NamedNode
- * @see BlankNode
- * @see Literal
- * @see Variable
- * @see DefaultGraph
+ * RDF/JS taskforce Term
+ * @link https://rdf.js.org/data-model-spec/#term-interface
  */
-export type Term = NamedNode | BlankNode | Literal | Variable | DefaultGraph;
+export interface Term {
+    termType: string
+    value: string
+
+    /**
+     * Compare this term with {other} for structural equality
+     */
+    equals (other: Term): boolean
+  }
 
 /**
  * Contains an IRI.
